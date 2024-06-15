@@ -1,6 +1,5 @@
 # age-calculation
-初期状態
+3-4 計算アプリケーションを作ろうの通り作成
 
-## 開発環境の構築
-create-vue で環境構築
-参考URL：https://reffect.co.jp/vue/create-vue
+## 参考
+Vue.js3超入門
