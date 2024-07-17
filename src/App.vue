@@ -13,13 +13,11 @@ const selectedMonth = ref('')
 const selectedDay = ref('')
 const userInputYear = ref('')
 
+
 // 現在の月と誕生月を比較して絶対値で返す
 // 誕生月が現在の月以上の数字のとき 7-7=0 10-7=3 12-7=5 →誕生月から現在の月を引く
 // 誕生月が現在の月より小さいときは 6-7=-1 3-7=-4 12-4=8 →12から絶対値を引く
 
-const difference = function (month, selectedMonth) {
-  return Math.abs(month - selectedMonth)
-}
 
 // 次の誕生日までの月数を計算するcomputedプロパティ
 const userBirthMonth = computed(() => {
@@ -32,14 +30,22 @@ const userBirthMonth = computed(() => {
   }
 })
 
-// 間違っているコード
-// const userBirthMonth = computed(() => {
-//   if (selectedMonth < month)
-//     return 12 - difference
-//   else
-//     return difference
-// })
-
+// 年齢を計算するcomputedプロパティ
+const userAge = computed(() => {
+  if (!userInputYear.value || !selectedMonth.value || !selectedDay.value) return ''
+  const birthYear = parseInt(userInputYear.value)
+  const birthMonth = parseInt(selectedMonth.value)
+  const birthDay = parseInt(selectedDay.value)
+  
+  let age = year - birthYear
+  
+  // 現在の月日が誕生日を過ぎていない場合、年齢を1歳減らす
+  if (month < birthMonth || (month === birthMonth && day < birthDay)) {
+    age -= 1
+  }
+  
+  return age
+})
 
 </script>
 
@@ -107,7 +113,7 @@ const userBirthMonth = computed(() => {
     </select>
   </div>
   
-  <p>現在の年齢：{{ year - userInputYear }} 歳</p>
+  <p>現在の年齢：{{ userAge }} 歳</p>
   <p>次の誕生日まであと{{ userBirthMonth }} ヶ月</p>
 </template>
 
