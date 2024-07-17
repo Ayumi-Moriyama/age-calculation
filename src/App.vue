@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue'
+import { ref , computed } from 'vue'
 // const count = ref(0)
 const date = new Date()
 const year = date.getFullYear()
@@ -8,9 +8,38 @@ const year = date.getFullYear()
 const month = date.getMonth() +1 
 const day = date.getDate()
 
+// ユーザーの生年月日
 const selectedMonth = ref('')
 const selectedDay = ref('')
-const userInput = ref('')
+const userInputYear = ref('')
+
+// 現在の月と誕生月を比較して絶対値で返す
+// 誕生月が現在の月以上の数字のとき 7-7=0 10-7=3 12-7=5 →誕生月から現在の月を引く
+// 誕生月が現在の月より小さいときは 6-7=-1 3-7=-4 12-4=8 →12から絶対値を引く
+
+const difference = function (month, selectedMonth) {
+  return Math.abs(month - selectedMonth)
+}
+
+// 次の誕生日までの月数を計算するcomputedプロパティ
+const userBirthMonth = computed(() => {
+  if (!selectedMonth.value) return ''
+  const birthMonth = parseInt(selectedMonth.value)
+  if (birthMonth >= month) {
+    return birthMonth - month
+  } else {
+    return 12 - (month - birthMonth)
+  }
+})
+
+// 間違っているコード
+// const userBirthMonth = computed(() => {
+//   if (selectedMonth < month)
+//     return 12 - difference
+//   else
+//     return difference
+// })
+
 
 </script>
 
@@ -19,12 +48,12 @@ const userInput = ref('')
   <p>生年月日を入力してください</p>
   <div>
     生年月日:
-      {{ userInput }} 年
+      {{ userInputYear }} 年
       {{ selectedMonth }} 月
       {{ selectedDay }} 日
   </div>
   <div>
-    <input v-model.number="userInput" placeholder="生まれた年を数字で入力" />
+    <input v-model.number="userInputYear" placeholder="生まれた年を数字で入力" />
 
     <select v-model.number="selectedMonth">
       <option disabled value="">月</option>
@@ -78,8 +107,7 @@ const userInput = ref('')
     </select>
   </div>
   
-  <p>現在の年齢：</p>
-  <p>次の誕生日まであと</p>
-  <!-- <button @click="count++">Count is: {{ count }}</button> -->
+  <p>現在の年齢：{{ year - userInputYear }} 歳</p>
+  <p>次の誕生日まであと{{ userBirthMonth }} ヶ月</p>
 </template>
 
