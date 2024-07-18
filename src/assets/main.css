@@ -1,4 +1,110 @@
-@import './base.css';
+.background {
+  background-color: #EBF4EF;
+}
+
+h1 {
+padding: 0.2em;
+  /*文字周りの余白*/
+  color: #010101;
+  /*文字色*/
+  background: #CCE7D3;
+  /*背景色*/
+  border-bottom: solid 3px #69BD83;
+  /*下線*/
+}
+
+h2 {
+  text-align: center;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+/* カード表示 */
+.card-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.card1 {
+  width: 300px;
+  margin: 10px;
+  border-radius: 5px;
+  background-color: #69BD83;
+  box-shadow: 0 3px 6px #ccc;
+}
+
+.card2 {
+  width: 500px;
+  margin: 20px;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: 0 3px 6px #ccc;
+}
+
+.box1 {
+  display: flex;
+}
+
+.image1 {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 5px 0 0 5px;
+}
+
+.title1 {
+  font-size: 150%;
+  margin: 10px;
+  color: #444;
+}
+
+.content1 {
+  padding: 5px;
+  color: #FFF;
+}
+
+/* テーブル表示 */
+table {
+  text-align: center;
+  border-collapse: collapse;
+}
+
+table th {
+  color: #fff;
+  background: #004986;
+  border: solid 1px black;
+  padding: 10px;
+}
+
+table td {
+  border: solid 1px black;
+  padding: 3px 10px;
+}
+
+/* ボックス表示 */
+.box2 {
+  padding: 0.5em 1em;
+  margin: 2em 0;
+  color: #474747;
+  background: #fff;
+  /*背景色*/
+  border-left: double 7px #004986;
+  /*左線*/
+  border-right: double 7px #004986;
+  /*右線*/
+}
+
+
+
+
+
+
+
+/* 以下、デフォルトのコード */
+/* @import './base.css'; */
 
 /* #app {
   max-width: 1280px;
