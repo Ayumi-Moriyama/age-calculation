@@ -10,12 +10,10 @@
 
 - 次の誕生日まであと何ヶ月あるかの計算ができるようになった
 - 誕生日が来る前は‐1 歳になるようにした
+- レスポンシブ対応
 
-## デプロイ
-
-- gh-pages をインストールしてみた → デプロイ自体はできたっぽいけど真っ白
-- vite.config.js に base を追加してみた
 
 ## 参考
 
-parseInt()関数 https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/parseInt
+- parseInt()関数 https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/parseInt
+- gh-pagesでのデプロイ https://zenn.dev/ami_fd14/articles/gh-pages-20240725

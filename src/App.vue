@@ -1,6 +1,6 @@
 <script setup>
 import { ref , computed } from 'vue'
-// const count = ref(0)
+
 const date = new Date()
 const year = date.getFullYear()
 
@@ -153,7 +153,8 @@ const userAge = computed(() => {
           </div>
         </div>
         <div class="box2">
-          <p>現在の年齢：{{ userAge }} 歳</p>
+          <p>現在の年齢：{{ userAge }} 歳 </p>
+          <p>{{ 12 - userBirthMonth }} ヶ月</p>
           <p>次の誕生日まであと{{ userBirthMonth }} ヶ月</p>
         </div>
       </div>
